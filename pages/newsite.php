@@ -2,7 +2,7 @@
 session_start();
 $bdd = new PDO('mysql:host=localhost;dbname=messagerie;charset=utf8','root','root');
 if(isset($_POST['envoyer'])){
-    $message= htmlspecialchars($_POST['message']);        
+    $message= htmlspecialchars($_POST['message']);//retirer ca        
     $insererMessage = $bdd->prepare('INSERT INTO site(auteurs, presentation, nom)VALUES(?,?,?)');
     $insererMessage->execute(array($_POST['auteur'],$_POST['presentation'],$_POST['nom']));
 }
