@@ -1,0 +1,63 @@
+.wrapper{
+  width: 100%;
+}
+.carousel{
+  margin: auto;
+}
+.carousel .cart{
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  border-radius: 0px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+}
+.carousel .cart-1{
+  background: #ed1c24;
+}
+.carousel .cart-2{
+  background: #0072bc;
+}
+.carousel .cart-3{
+  background: #39b54a;
+}
+.carousel .cart-4{
+  background: #f26522;
+}
+.carousel .cart-5{
+  background: #630460;
+}
+
+.owl-carousel .owl-prev{left:3em}
+.owl-carousel .owl-next{right:3em}
+.owl-carousel .owl-prev,
+.owl-carousel .owl-next{
+  width: 22px;
+  height: 40px;
+  margin-top: -20px;
+  position: absolute;
+  top: 50%;
+  
+}
+.overlay {
+  display: flex;
+  background-color: rgba(0,0,0,0.50);  
+  color: #f0e9e9;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.product:hover .overlay {
+  display: flex;
+}
+
+.une-slide .apre-img input{
+  transform: scale(1,1);
+  transition:transform 0.2s linear;
+}
+.une-slide:hover .overlay .apre-img input{
+  transform: scale(1.1,1.1);
+}
+
+
