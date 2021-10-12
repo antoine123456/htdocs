@@ -4,7 +4,9 @@ $bdd = new PDO('mysql:host=localhost;dbname=messagerie;charset=utf8','root','roo
 $recupComm = $bdd->prepare('SELECT * FROM message WHERE id_destination = ?');  
 $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE id= ?');
 $recupUser->execute(array($_POST['userid'])); 
-?>
+
+   ?> 
+   
 <div class="modal-header">
     <h4 class="modal-title"><?php echo $recupUser->fetch()['pseudo'];?></h4>
     <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
@@ -43,6 +45,7 @@ $recupUser->execute(array($_POST['userid']));
     ?>
     </ul>
 </div>
+
 <script type="text/javascript">
 $(document).ready(function(){
 $('.envmessp').click(function(){

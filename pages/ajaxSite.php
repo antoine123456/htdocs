@@ -33,18 +33,30 @@ $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE id = ?');
                 <?php echo $site['presentation'];?>
          
         </div>
-        <div class="auteurs">
-            <ul class="list-group list-group-horizontal">
+        <div class="auteurs d-flex justify-content-end">
+            <ul class="list-group  list-group-horizontal">
             <?php
                 for($i=0;$i<$rem+1;$i++){
                     $truk = substr($var,$i*3,2);
+                   
                     $recupUser->execute(array($truk));
                     $user = $recupUser->fetch();
             ?>
-                <li class="list-group-item">
-                <a class="perso" href="#" data-id="<?php echo $user['id'];?>">
-                    <?php echo $user['pseudo'];?>
-                </a>
+                <li class="list-group-item ">
+                <?php if($_SESSION["pseudo"]){
+                                ?>
+                                <a class="perso" href="#" data-id="<?php echo $user['id'];?>">
+                                <?php echo $user['pseudo'];?>
+                                </a>
+                                <?php
+                            }else{
+                                ?>
+                                
+                                <?php echo $user['pseudo'];?>
+
+                                <?php
+                            }
+                          ?>
                 </li>
             <?php
                 }   
@@ -52,8 +64,9 @@ $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE id = ?');
             </ul>
          
         </div>
-        <div class="message">
-            <div>
+        <div class="message mt-3 ">
+        <ul class="list-group">
+
                 <?php 
                     $recupComm->execute(array($_POST['userid']));
                     echo $getid;
@@ -61,23 +74,37 @@ $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE id = ?');
                         $recupUser->execute(array($comm['auteur']));
                         $aut = $recupUser->fetch();
                 ?>
-                        <div>
+                        <li class="list-group-item text-end bg-light border-1">
+                        <p class="text-start">
                             <?php echo $comm['message'];?>
-                            <a class="perso" href="#" data-id="<?php echo $user['id'];?>">
-                    <?php echo $user['pseudo'];?>
-                </a>
-                        </div>               
+                            </p>
+                            <?php if($_SESSION["pseudo"]){
+                                ?>
+                                <a class="perso " href="#" data-id="<?php echo $aut['id'];?>">
+                                
+                                    <?php echo $aut['pseudo'];?>
+                                
+                                </a>
+                                <?php
+                            }else{
+                                ?>
+                                <?php echo $aut['pseudo'];?>
+                                <?php
+                            }
+                          ?>
+                        </li>               
                 <?php                
                     } 
                 ?>
-            </div>
+            </ul>
         </div>
     </div>
     <script type="text/javascript">
     $(document).ready(function(){
         $('.perso').click(function(){
             var userid = $(this).data("id");
-            $.ajax({
+           
+                $.ajax({
                 url:"./pages/ajaxMessPers.php",
                 method:"POST",
                 data:{userid:userid},
@@ -96,7 +123,9 @@ $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE id = ?');
                 success:function(data){
                    $('.booton').html(data);
                 }
-            });
+            }); 
+         
+           
         });
     });
     </script>

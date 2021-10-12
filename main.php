@@ -90,18 +90,25 @@
         ?> 
   
 <!-- carousels-->
-    <div class="bg-success">
+    <div class="bg-light">
         <h1>
             Catégorie
             </h1>
       <div class="wrapper">
         <div class="carousel p-2 owl-carousel">
+
 <!-- Presentation -->
         <?php
+   
             $recupSite = $bdd->query('SELECT * FROM site');
             while($site = $recupSite->fetch()){
+                $var =  $site['auteurs'];
+                $len = strlen($var);
+                $rem = intdiv($len,3);
+                $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE id = ?');
+                
                 ?>
-                <div class="cart une-slide cart-1">
+                <div class="card item-card card-block une-slide cart-1">
                     <div class=" apre-img  product">
                         <input src="./images/pngegg.png"  type="image" data-id='<?php echo $site['id'];?>'  class="card-img-top presentacion"></input>
                                     <div class="overlay">
@@ -109,6 +116,36 @@
                                     </div>          
                         </div>
                         <td><?php echo substr($site['presentation'],0,200);?></td>
+                        <div class="auteurs">
+                            <ul class="list-group list-group-horizontal justify-content-end">
+                            <?php
+                                for($i=0;$i<$rem+1;$i++){
+                                    $truk = substr($var,$i*3,2);
+                                    $recupUser->execute(array($truk));
+                                    $user = $recupUser->fetch();
+                            ?>
+                                <li class="list-group-item bg-transparent border-0">
+                                <?php if($_SESSION["pseudo"]){
+                                                ?>
+                                                <a class="perso" href="#" data-id="<?php echo $user['id'];?>">
+                                                <?php echo $user['pseudo'];?>
+                                                </a>
+                                                <?php
+                                            }else{
+                                                ?>
+                                                
+                                                <?php echo $user['pseudo'];?>
+
+                                                <?php
+                                            }
+                                        ?>
+                                </li>
+                            <?php
+                                }   
+                            ?>
+                            </ul>
+                        
+                        </div>
                 </div>
                 <?php
                 }
@@ -116,12 +153,40 @@
         </div>
         </div>
     </div>
+       <!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+
+    
+  <!-- Section: Links  -->
+<div class="container p-4 pb-0">
+      <!-- Section: CTA -->
+      <section class="">
+        <p class="d-flex justify-content-center align-items-center">
+          <span class="me-3"><button type="button" class="btn btn-outline-dark btn-rounded nvcom" data-bs-toggle="modal" data-bs-target="#info" >
+            A propos
+          </button></span>
+          <button type="button" class="btn btn-outline-dark btn-rounded nvcom" data-bs-toggle="modal" data-bs-target="#nvcom" >
+            S'enregistrer!
+          </button>
+        </p>
+      </section>
+      <!-- Section: CTA -->
+    </div>
+    <!-- Grid container -->
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="#">X°AU</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
     <div class="rr" href="replacement.html"></div>
     <!-- Connexion -->
     <div class="modal fade" id="loginModal" role="dialog">
             <div class="modal-dialog">
                 
-                <div class="modal-content">
+                <div class="modal-content p-2">
                     <div class="modal-header">
                         <h4 class="modal-title">Connection</h4>
                             <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
@@ -130,38 +195,47 @@
                 <label>USername</label>
                 <input type="text" name="username" id="username" class="form-control"/><br/>
                 <label>Password</label>
-                <input type="password" name="password" id="password" class="form-control"/>
-                <br/>
-                <button type="button" name="login_button" id="login_button" class="login_button btn btn-success">Login</button>
-                <div class="modal-footer">          
-                <a href="#" class="nvcom" data-bs-toggle="modal" data-bs-target="#nvcom">No member yet ?</a>
-                </div>                
+                <input type="password" name="password" id="password" class="form-control"/><br/>
+                <div class="text-end">
+                Besoin d'un compte ?<a href="#" class="nvcom" data-bs-toggle="modal" data-bs-target="#nvcom"> S'inscrire maintenant</a>
+
+                </div>
+
+                <div class="modal-footer">
+                <button type="button" name="login_button" id="login_button" class="login_button btn btn-success">Connection</button>          
+                <button type="button" class="btn btn-default" data-bs-dismiss="modal">Fermer</button>
+   
+            </div>                
             </div>
         </div>
     </div>
-    
+   
     <!-- Conection nouveau -->
     <div class="modal fade" id="loginModal1" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content  p-2">
                     <div class="modal-header">
                         <h4 class="modal-title">Connection</h4>
                             <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
                     </div>
-                <div class="modal-body"></div>
+                <div class="modal-body py-2"></div>
                 <label>USername</label>
                 <input type="text" name="usr" id="usr" class="form-control"/><br/>
                 <label>Password</label>
                 <input type="pass" name="pass" id="pass" class="form-control"/>
                 <br/>
-                <button type="button" name="login_button1" id="login_button1" class="login_button1 btn btn-success">Login</button>              
+                <div class="modal-footer">
+                <button type="button" name="login_button1" id="login_button1" class="login_button1 btn btn-success">Connection</button>              
+                <button type="button" class="btn btn-default" data-bs-dismiss="modal">Fermer</button>
+
+            </div>
             </div>
         </div>
     </div>
     <!-- Nouveau -->
     <div class="modal fade" id="nvcom" role="dialog">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content p-2">
                     <div class="modal-header">
                         <h4 class="modal-title">Nouveau compte</h4>
                         <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
@@ -172,7 +246,11 @@
                 <label>Password</label>
                 <input type="mdp" name="mdp" id="mdp" class="form-control"/>
                 <br/>
-                <button type="button" name="nvcomp" id="nvcomp" class="nvcomp btn btn-success">Login</button>
+                <div class="modal-footer">
+                <button type="button" name="nvcomp" id="nvcomp" class="nvcomp btn btn-success">Insertion</button>
+                <button type="button" class="btn btn-default" data-bs-dismiss="modal">Fermer</button>
+
+            </div>
             </div>
         </div>
     </div>
@@ -226,7 +304,32 @@
             </div>
         </div>
     </div>
-    
+    <!-- Info -->
+    <div class="modal fade" id="info" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h4 class="modal-title"> A propos</h4>
+                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                Ce site permet de poster des message de manière
+                    <ul>
+                        <li>Ethique et responsable</li>
+                        <li>Sans VSS</li>
+                    </ul>
+                    <div class="text-end">
+                        La dirección
+                    </div>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Fermer</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+ 
 <!-- React -->
 <script type="text/JavaScript" src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
 <script type="text/JavaScript" src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
@@ -238,6 +341,6 @@
 
 <!-- Modals  -->
 <script type="text/JavaScript" src="./Scripts.js"></script>
-
 </body>
+
 </html>

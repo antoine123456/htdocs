@@ -133,7 +133,8 @@ $(document).ready(function(){
                     data:{commentaire:commentaire,attache:attache},
                     success:function(data){
                         if(data == 1 ){
-                        alert('envoyé');
+                            alert('envoyée');
+                            $('#presentation').modal('hide');
                         }else{
                             alert('erreur?');
                         }
@@ -177,3 +178,32 @@ $(document).ready(function(){
     });
 }); */
 
+
+$(document).ready(function(){
+    $('.perso').click(function(){
+        var userid = $(this).data("id");
+       
+            $.ajax({
+            url:"./pages/ajaxMessPers.php",
+            method:"POST",
+            data:{userid:userid},
+            success:function(data){
+                $('#presentation').modal('hide');
+               $('.affichage').html(data);
+               $('#messagerie').modal('hide');
+               $('#messageriz').modal('show');
+               
+            }
+        });
+        $.ajax({
+            url:"./pages/ajaxMessPersButton.php",
+            method:"POST",
+            data:{userid:userid},
+            success:function(data){
+               $('.booton').html(data);
+            }
+        }); 
+     
+       
+    });
+});
