@@ -29,10 +29,11 @@ $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE id = ?');
     </div>
     <div class="modal-body">
         <div class="py-1">
-            
+            <a href="<?php echo $site['url']?>">
                 <?php echo $site['presentation'];?>
-         
+            </a>
         </div>
+        
         <div class="auteurs d-flex justify-content-end">
             <ul class="list-group  list-group-horizontal">
             <?php

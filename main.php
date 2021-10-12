@@ -34,7 +34,7 @@
                     <img 
                     class="d-inline-block align-top"
                     src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30"/>
-                    MKTSS 
+                    Barkhane 
                 </a>
                 <button 
                 type="button" 
@@ -77,7 +77,7 @@
                     <img 
                     class="d-inline-block align-top"
                     src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30"/>
-                    MKTSS 
+                    Barkhane 
                 </a>
                 
                         <button type="button" name="login" id="login" class="loginModal  btn btn-success" data-bs-toggle="modal" data-bs-target="#loginModal">Connection</button>
@@ -91,9 +91,7 @@
   
 <!-- carousels-->
     <div class="bg-light">
-        <h1>
-            Catégorie
-            </h1>
+     
       <div class="wrapper">
         <div class="carousel p-2 owl-carousel">
 
@@ -176,7 +174,7 @@
   <!-- Copyright -->
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
     © 2021 Copyright:
-    <a class="text-reset fw-bold" href="#">X°AU</a>
+    <a class="text-reset fw-bold" href="#">SOLCOURT</a>
   </div>
   <!-- Copyright -->
 </footer>
@@ -344,3 +342,5 @@
 </body>
 
 </html>
+//TODO enlever s'inscrire lorsque connécté
+//TODO plein d'erreurs 
