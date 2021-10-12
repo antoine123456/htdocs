@@ -62,7 +62,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="./deconnexion.php">Logout</a></li>
+                                <li><a class="dropdown-item" href="./pages/deconnexion.php">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
