@@ -23,15 +23,15 @@ $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE id = ?');
 <!-- presentation -->
   <!--connexion-->
     <!-- bcrypt-->
-    <div class="modal-header">
-        <h4 class="modal-title"><?php echo $site['nom'];?></h4>
+    <div class="modal-header"><a href="<?php echo $site['url']?>">
+        <h4 class="modal-title"><?php echo $site['nom'];?></h4></a>
         <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
     </div>
     <div class="modal-body">
         <div class="py-1">
-            <a href="<?php echo $site['url']?>">
+            
                 <?php echo $site['presentation'];?>
-            </a>
+            
         </div>
         
         <div class="auteurs d-flex justify-content-end">
