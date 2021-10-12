@@ -5,9 +5,10 @@ $bdd = new PDO('mysql:host=localhost;dbname=messagerie;charset=utf8','root','roo
 
     <?php
     if (isset($_POST['username'])){  
-        $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE pseudo = ? AND mdp = ?');
-        $recupUser->execute(array($_POST['username'],$_POST['password']));
-        if($recupUser->rowCount()>0){
+        $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE pseudo = ?');
+        $recupUser->execute(array($_POST['username']));
+        $password = $recupUser->fetch()['mdp'];
+        if(password_verify($_POST['password'],$password)){
             $_SESSION['pseudo'] = $_POST['username'];
             $_SESSION['id'] = $recupUser->fetch()['id'];
             echo 1;
