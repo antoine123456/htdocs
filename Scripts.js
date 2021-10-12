@@ -66,7 +66,7 @@ $(document).ready(function(){
                 }
             });
         }else{
-            alert('Remplis tout les champs pédé');
+            alert('Remplis tout les champs');
         }
     });
 });
