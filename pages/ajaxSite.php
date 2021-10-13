@@ -71,7 +71,6 @@ $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE id = ?');
 
                 <?php 
                     $recupComm->execute(array($_POST['userid']));
-                    echo $getid;
                     while($comm = $recupComm->fetch()){
                         $recupUser->execute(array($comm['auteur']));
                         $aut = $recupUser->fetch();
