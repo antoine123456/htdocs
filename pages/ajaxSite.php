@@ -23,17 +23,18 @@ $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE id = ?');
 <!-- presentation -->
   <!--connexion-->
     <!-- bcrypt-->
-    <div class="modal-header"><a href="<?php echo $site['url']?>">
+    <div class="modal-header"><a class="mdl" href="<?php echo $site['url']?>">
         <h4 class="modal-title"><?php echo $site['nom'];?></h4></a>
         <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
     </div>
     <div class="modal-body">
-        <div class="py-1">
+    <input src="./images/pngegg.png"  type="image" data-id='<?php echo $site['id'];?>'  class="card-img-top presentacion"></input>
+
+    <div class="py-1">
             
-                <?php echo $site['presentation'];?>
-            
-        </div>
+            <?php echo $site['presentation'];?>
         
+    </div>
         <div class="auteurs d-flex justify-content-end">
             <ul class="list-group  list-group-horizontal">
             <?php
@@ -46,7 +47,7 @@ $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE id = ?');
                 <li class="list-group-item ">
                 <?php if($_SESSION["pseudo"]){
                                 ?>
-                                <a class="perso" href="#" data-id="<?php echo $user['id'];?>">
+                                <a class="perso mdl" href="#" data-id="<?php echo $user['id'];?>">
                                 <?php echo $user['pseudo'];?>
                                 </a>
                                 <?php
@@ -81,7 +82,7 @@ $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE id = ?');
                             </p>
                             <?php if($_SESSION["pseudo"]){
                                 ?>
-                                <a class="perso " href="#" data-id="<?php echo $aut['id'];?>">
+                                <a class="perso mdl" href="#" data-id="<?php echo $aut['id'];?>">
                                 
                                     <?php echo $aut['pseudo'];?>
                                 

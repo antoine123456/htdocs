@@ -21,6 +21,7 @@
 
         <!-- Styles  -->
         <link rel="stylesheet" href="./style.css">
+       
 
         <title>Anneau</title>
     </head>
@@ -89,31 +90,43 @@
              }
         ?> 
   
+
 <!-- carousels-->
-    <div class="bg-light">
+<div class="bg-light">
      
-      <div class="wrapper">
-        <div class="carousel p-2 owl-carousel">
+     <div class="wrapper">
+       <div class="carousel p-2 owl-carousel">
 
 <!-- Presentation -->
-        <?php
-   
-            $recupSite = $bdd->query('SELECT * FROM site');
-            while($site = $recupSite->fetch()){
-                $var =  $site['auteurs'];
-                $len = strlen($var);
-                $rem = intdiv($len,3);
-                $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE id = ?');
-                
-                ?>
-                <div class="card item-card card-block une-slide cart-1">
-                    <div class=" apre-img  product">
-                        <input src="./images/pngegg.png"  type="image" data-id='<?php echo $site['id'];?>'  class="card-img-top presentacion"></input>
-                                    <div class="overlay">
-                                    <?php echo $site['nom'];?>
-                                    </div>          
+       <?php
+  
+           $recupSite = $bdd->query('SELECT * FROM site');
+           while($site = $recupSite->fetch()){
+               $var =  $site['auteurs'];
+               $len = strlen($var);
+               $rem = intdiv($len,3);
+               $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE id = ?');
+               
+               ?>
+             
+                    <div class="presentacion" data-id='<?php echo $site['id'];?>'>
+                    
+                    <figure class='newsCard news-Slide-up '>
+                    <input src="<?php echo "./images/".$site['image'];?>"  type="image" data-id='<?php echo $site['id'];?>'  class="presentacion"></input>
+
+                        
+                        <div class='newsCaption px-4'>
+                        <div class="d-flex align-items-center justify-content-between cnt-title">
+                        <h5 class='newsCaption-title text-white m-0'><a class="carte" href="<?php echo $site['url'];?>"><?php echo $site['nom'];?></a> </h5><i class="fas fa-arrow-alt-circle-right "></i>
                         </div>
-                        <td><?php echo substr($site['presentation'],0,200);?></td>
+                        <div class='newsCaption-content d-flex '>
+                        <p class="col-10 py-3 px-0"> <td>
+                        <?php if(strlen($site['presentation'])>75){
+                            echo substr($site['presentation'],0,75)."...";
+                        }    else{
+                            echo $site['presentation'];
+                        };?></td></p>
+                        </div>
                         <div class="auteurs">
                             <ul class="list-group list-group-horizontal justify-content-end">
                             <?php
@@ -125,7 +138,7 @@
                                 <li class="list-group-item bg-transparent border-0">
                                 <?php if($_SESSION["pseudo"]){
                                                 ?>
-                                                <a class="perso" href="#" data-id="<?php echo $user['id'];?>">
+                                                <a class="perso carte" href="#" data-id="<?php echo $user['id'];?>">
                                                 <?php echo $user['pseudo'];?>
                                                 </a>
                                                 <?php
@@ -143,14 +156,22 @@
                             ?>
                             </ul>
                         
+                    </div>
                         </div>
-                </div>
-                <?php
-                }
-            ?>          
-        </div>
-        </div>
-    </div>
+                        <span class="overlay"></span>
+                    </figure>
+                    </a>
+            </div> <!-- end card1-->
+  
+               <?php
+               }
+           ?>          
+       </div>
+       </div>
+   </div>
+    
+  
+
        <!-- Footer -->
 <footer class="text-center text-lg-start bg-light text-muted">
 
@@ -334,8 +355,10 @@
 <script type="text/JavaScript" src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
 <!-- Carousel -->
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+ -->
+ <script src="./modifiedCarousel.js"></script>
 
 <!-- Modals  -->
 <script type="text/JavaScript" src="./Scripts.js"></script>

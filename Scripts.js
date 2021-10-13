@@ -1,48 +1,3 @@
-
-
-var owl = $('.owl-carousel');
-owl.owlCarousel({
-    loop:true,
-    nav:true,
-    dots : false,
-    stagePadding: 0,
-    margin: 10,
-    rewind: false,
-    pagination: false,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:
-        {
-            items:2
-        },
-        900:{
-            items:3
-        },
-        1500:{
-            items:5
-        },
-        3000:{
-            items:5
-        }
-    },
-    navText:['<svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>','<svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg>']
-}) 
-owl.on('mousewheel', '.owl-stage', function (e) {
-        console.log(e.originalEvent.deltaY)
-    if (e.originalEvent.deltaY>0) {
-        owl.trigger('next.owl');
-    } if (e.originalEvent.deltaY<0){
-        owl.trigger('prev.owl');
-    }
-    if (e.originalEvent.deltaX<0) {
-        owl.trigger('next.owl');
-    } if (e.originalEvent.deltaX>0){
-        owl.trigger('prev.owl');
-    }
-    e.preventDefault();
-});
 $(document).ready(function(){
     $('.login_button').click(function(){
         var username=$('#username').val();
@@ -207,3 +162,93 @@ $(document).ready(function(){
        
     });
 });
+
+
+/* var owl = $('.owl-carousel');
+owl.owlCarousel({
+    loop: true,
+    margin: 20,
+    autoplay: true,
+    slideTransition: 'linear',
+    autoplayTimeout: 0,
+    autoplaySpeed: 3000,
+    autoplayHoverPause: false,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:
+        {
+            items:2
+        },
+        900:{
+            items:3
+        },
+        1500:{
+            items:5
+        },
+        3000:{
+            items:5
+        }
+    },
+    navText:['<svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>','<svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path></svg>']
+}) 
+owl.on('mousewheel', '.owl-stage', function (e) {
+        console.log(e.originalEvent.deltaY)
+    if (e.originalEvent.deltaY>0) {
+        owl.trigger('next.owl');
+    } if (e.originalEvent.deltaY<0){
+        owl.trigger('prev.owl');
+    }
+    if (e.originalEvent.deltaX<0) {
+        owl.trigger('next.owl');
+    } if (e.originalEvent.deltaX>0){
+        owl.trigger('prev.owl');
+    }
+    e.preventDefault();
+}); */
+$(document).ready(function () {
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+        loop: true,
+        margin: 20,
+        autoplay: true,
+        slideTransition: 'linear',
+        autoplayTimeout: 0,
+        autoplaySpeed: 8000,
+        autoplayHoverPause: false,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:
+            {
+                items:2
+            },
+            900:{
+                items:3
+            },
+            1500:{
+                items:5
+            },
+            3000:{
+                items:5
+            }
+        }
+    });
+owl.on('mousewheel', '.owl-stage', function (e) {
+    console.log(e.originalEvent.deltaY)
+if (e.originalEvent.deltaY>0) {
+    owl.trigger('next.owl');
+} if (e.originalEvent.deltaY<0){
+    owl.trigger('prev.owl');
+}
+if (e.originalEvent.deltaX<0) {
+    owl.trigger('next.owl');
+} if (e.originalEvent.deltaX>0){
+    owl.trigger('prev.owl');
+}
+e.preventDefault();
+});
+});
+
