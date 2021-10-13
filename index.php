@@ -1,6 +1,6 @@
-
 <?php
-    $_SESSION['pseudo'] = null;
-    $_SESSION['id'] = null;   
+        session_start();
+        
+    $_SESSION['pseudo'] = "invite"; 
     header('Location: ./main.php');
 ?>

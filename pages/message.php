@@ -1,7 +1,8 @@
 <?php
 session_start();
-$bdd = new PDO('mysql:host=localhost;dbname=messagerie;charset=utf8','root','root');
-if (!$_SESSION['pseudo']){ 
+    $bdd = new PDO('mysql:host=localhost;dbname=messagerie;charset=utf8','root','root');
+
+if ($_SESSION["pseudo"]!="invite"){ 
     header('Location: ./connexion.php');
 }
 if(isset($_GET['id'])  AND !empty($_GET['id'])){
@@ -29,7 +30,7 @@ if(isset($_GET['id'])  AND !empty($_GET['id'])){
     </head>
     <body>
     <?php
-            if ($_SESSION['pseudo']){ 
+            if ($_SESSION["pseudo"]!="invite"){ 
                 $user = $bdd->prepare('SELECT * FROM message WHERE pseudo = ? AND id_destination = ? OR id_source = ? AND id_destination=?' );
                 $user->execute(array($_SESSION['pseudo']));
                 ?>  

@@ -1,6 +1,7 @@
 <?php
 session_start();
-$bdd = new PDO('mysql:host=localhost;dbname=messagerie;charset=utf8','root','root');
+    $bdd = new PDO('mysql:host=localhost;dbname=messagerie;charset=utf8','root','root');
+
 $recupUser = $bdd->prepare('SELECT * FROM site WHERE id = ?');
 $recupUser->execute(array($_POST['userid']));
 $site = $recupUser->fetch();
@@ -11,7 +12,7 @@ $site = $recupUser->fetch();
     <!-- bcrypt-->
     <div class="container">
        <?php
-            if ($_SESSION['id']){
+            if ($_SESSION["pseudo"]!="invite"){
                 if(isset($_POST['valider'])  AND !empty($_POST['message'])){
                     $message = htmlspecialchars($_POST['message']);
                     $getid=$site['id'];
@@ -71,7 +72,7 @@ $site = $recupUser->fetch();
                     ?>
                 </div>
                 <?php
-                if ($_SESSION['pseudo']){ 
+                if ($_SESSION["pseudo"]!="invite"){ 
                 ?>
                     <div class="div">
                         <form method="POST" action="">

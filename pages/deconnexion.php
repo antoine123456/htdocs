@@ -1,7 +1,8 @@
 <?php
     session_start();
-    $bdd = new PDO('mysql:host=localhost;dbname=messagerie;charset=utf8','root','root');
-    $_SESSION['pseudo'] = null;
+        $bdd = new PDO('mysql:host=localhost;dbname=messagerie;charset=utf8','root','root');
+
+    $_SESSION['pseudo'] = "invite";
     $_SESSION['id'] = null;   
     header('Location: ../main.php') 
 ?>

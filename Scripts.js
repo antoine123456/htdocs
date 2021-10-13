@@ -145,6 +145,7 @@ $(document).ready(function(){
             success:function(data){
                 $('#presentation').modal('hide');
                $('.affichage').html(data);
+               $('#info').modal('hide');
                $('#messagerie').modal('hide');
                $('#messageriz').modal('show');
                
@@ -219,20 +220,25 @@ $(document).ready(function () {
         autoplayHoverPause: false,
         responsive:{
             0:{
-                items:1
+                items:1,
+                autoplaySpeed: 999999,
             },
             600:
             {
-                items:2
+                items:2,
+                autoplaySpeed: 8000,
             },
             900:{
-                items:3
+                items:3,
+                autoplaySpeed: 8000,
             },
             1500:{
-                items:5
+                items:5,
+                autoplaySpeed: 8000,
             },
             3000:{
-                items:5
+                items:5,
+                autoplaySpeed: 8000,
             }
         }
     });

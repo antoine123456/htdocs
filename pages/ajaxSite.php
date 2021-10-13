@@ -1,11 +1,12 @@
 
 <?php
 session_start();
-$bdd = new PDO('mysql:host=localhost;dbname=messagerie;charset=utf8','root','root');
+    $bdd = new PDO('mysql:host=localhost;dbname=messagerie;charset=utf8','root','root');
+
 $recupUser = $bdd->prepare('SELECT * FROM site WHERE id = ?');
 $recupUser->execute(array($_POST['userid']));
 $site = $recupUser->fetch();
-if ($_SESSION['id']){
+if ($_SESSION["pseudo"]!="invite"){
     if(isset($_POST['envoyer'])  AND !empty($_POST['message'])){
         $attache = $_POST['userid'];
         $message = htmlspecialchars($_POST['commentaire']);
@@ -23,12 +24,12 @@ $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE id = ?');
 <!-- presentation -->
   <!--connexion-->
     <!-- bcrypt-->
-    <div class="modal-header"><a class="mdl" href="<?php echo $site['url']?>">
+    <div class="modal-header"><a class="hype" href="<?php echo $site['url']?>">
         <h4 class="modal-title"><?php echo $site['nom'];?></h4></a>
         <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
     </div>
     <div class="modal-body">
-    <input src="./images/pngegg.png"  type="image" data-id='<?php echo $site['id'];?>'  class="card-img-top presentacion"></input>
+    <input src="<?php echo "./images/".$site['image'];?>"  type="image" data-id='<?php echo $site['id'];?>'  class="card-img-top presentacion"></input>
 
     <div class="py-1">
             
@@ -45,7 +46,7 @@ $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE id = ?');
                     $user = $recupUser->fetch();
             ?>
                 <li class="list-group-item ">
-                <?php if($_SESSION["pseudo"]){
+                <?php if($_SESSION["pseudo"]!="invite"){
                                 ?>
                                 <a class="perso mdl" href="#" data-id="<?php echo $user['id'];?>">
                                 <?php echo $user['pseudo'];?>
@@ -79,7 +80,7 @@ $recupUser = $bdd->prepare('SELECT * FROM utilisateur WHERE id = ?');
                         <p class="text-start">
                             <?php echo $comm['message'];?>
                             </p>
-                            <?php if($_SESSION["pseudo"]){
+                            <?php if($_SESSION["pseudo"]!="invite"){
                                 ?>
                                 <a class="perso mdl" href="#" data-id="<?php echo $aut['id'];?>">
                                 
