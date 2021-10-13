@@ -1,7 +1,7 @@
 
 # Barkhane
 
-Un site qui répértorie des site (futur concurent de google)
+Un site qui répértorie des site (futur concurent de google).
 
 ## Caractéristiques
 
@@ -13,6 +13,6 @@ Un site qui répértorie des site (futur concurent de google)
   
 ## Références
 
- - [Modified Owl Carousel](https://codepen.io/Raazi/pen/pojvqag)
+ - [Owl Carousel Modifé](https://codepen.io/Raazi/pen/pojvqag)
  - [Card Over](https://codepen.io/averdev/pen/VwjXbNb?editors=1010)
  - [Navbar, modal, footer, button, form ...](https://getbootstrap.com/)
